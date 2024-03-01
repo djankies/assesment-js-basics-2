@@ -6,7 +6,6 @@
     to make tickets from order information.
 */
 
-
 //////////////////PROBLEM 1////////////////////
 /*  
     Create a new class called `Ticket`.
@@ -31,7 +30,21 @@
 
 //CODE HERE
 
+class Ticket {
+    constructor(items, orderTime, customerId) {
+        this.items = items;
+        this.orderTime = orderTime;
+        this.customerId = customerId;
+        this.status = "queued";
+    }
 
+    updateStatus(newStatus) {
+        this.status = newStatus;
+        console.log(
+            `The order for customer ${this.customerId} is now ${this.status}.`
+        );
+    }
+}
 
 /*
     Create a new instance of your class.
@@ -45,7 +58,9 @@
 */
 
 //CODE HERE
+firstTicket = new Ticket("pizza, bread, and soda", "7:03 PM", 575);
 
+console.log(firstTicket);
 
 /*
     Call the `updateStatus` method on
@@ -54,3 +69,14 @@
 */
 
 //CODE HERE
+
+firstTicket.updateStatus("cooking");
+
+console.log(firstTicket);
+
+let encodedArt =
+    "c29ycnkgaSBhdGUgdGhlIG90aGVyIGhhbGYgOigKCiAgICAgICAgICAgICAgICBfLi4uLi5fCiAgICAgICAgICAgIF8uOmAuLS18LS0uYDouXwogICAgICAgICAgLjogLidcbyAgfCBvIC8nLiAnLgogICAgICAgICAvLyAnLiAgXCBvfCAgLyAgbyAnLlwKICAgICAgICAvLycuX28nLiBcIHxvLyBvXy4tJ29cXAogICAgICAgIHx8IG8gJy0uJy5cfC8uLScgbyAgIHx8CiAgICAgICAgfHwtLW8tLW8tLT58PCA6LS0tLW89fHwKCg==";
+
+let decodedArt = atob(encodedArt);
+
+console.log(decodedArt);

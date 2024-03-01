@@ -7,17 +7,16 @@
     and filtering those arrays. 
 */
 
-
 //////////////////PROBLEM 1////////////////////
 /*  
     Create an object called `pizza` that has 6
     properties: 
-        - name (string)
-        - price (number)
-        - category (string)
-        - popularity (number)
-        - rating (number)
-        - tags (array of strings)
+        \- name (string)
+        \- price (number)
+        \- category (string)
+        \- popularity (number)
+        \- rating (number)
+        \- tags (array of strings)
 
     Make sure that you give your properties values
     of the correct data type.
@@ -32,7 +31,14 @@
 
 //CODE HERE
 
-
+let pizza = {
+    name: "Pineapple Pizza",
+    price: 10,
+    category: "Gross Food",
+    popularity: 0,
+    rating: 0,
+    tags: ["not good", "waste of money", "find it in the trash"],
+};
 
 //////////////////PROBLEM 2////////////////////
 /* 
@@ -44,6 +50,7 @@
 
 //CODE HERE
 
+console.log(pizza.popularity);
 
 /*
     Second, log the second tag in your pizza's
@@ -54,6 +61,7 @@
 
 //CODE HERE
 
+console.log(pizza.tags[1]);
 
 /*
     Third, destructure the price off of the
@@ -64,6 +72,9 @@
 
 //CODE HERE
 
+let { price } = pizza;
+
+console.log(price);
 
 /*
     Fourth, and last, destructure the category
@@ -74,6 +85,9 @@
 
 //CODE HERE
 
+let { category } = pizza;
+
+console.log(category);
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -89,8 +103,48 @@
 
 //CODE HERE
 
-
-
+let foodArr = [
+    {
+        name: "Pineapple Pizza",
+        price: 10,
+        category: "Gross Food",
+        popularity: 0.1,
+        rating: 0.01,
+        tags: ["bad", "strange", "awful"],
+    },
+    {
+        name: "Fries",
+        price: 5,
+        category: "Appetizer",
+        popularity: 9,
+        rating: 8,
+        tags: ["good", "salty", "fatty"],
+    },
+    {
+        name: "Burger",
+        price: 12,
+        category: "Entree",
+        popularity: 10,
+        rating: 9,
+        tags: ["good", "meaty", "satisfying"],
+    },
+    {
+        name: "Salad",
+        price: 8,
+        category: "Appetizer",
+        popularity: 6,
+        rating: 7,
+        tags: ["healthy", "green", "fresh"],
+    },
+    {
+        name: "Soda",
+        price: 2,
+        category: "Drink",
+        popularity: 7,
+        rating: 6,
+        tags: ["sweet", "fizzy", "refreshing"],
+    },
+];
 //////////////////PROBLEM 4////////////////////
 /* 
     Let's filter the food objects according
@@ -105,7 +159,16 @@
 
 //CODE HERE
 
-// const filteredFood = foodArr.filter(/* CALLBACK HERE */)
+const filteredFood = foodArr.filter((food) => food.tags.includes("good"));
+
+console.log(filteredFood);
+
+
+// function filterByTag(arr, tag) {
+//     return arr.filter((food) => food.tags.includes(tag));
+// }
+// let goodFood = filterByTag(foodArr, "good");
+// console.log(goodFood);
 
 
 
@@ -150,12 +213,23 @@
 
 //CODE HERE
 
+function filterByProperty(property, number, type) {
+    let filteredArr = [];
+    if (type === "above") {
+        filteredArr = foodArr.filter((food) => food[property] > number);
+    } else if (type === "below") {
+        filteredArr = foodArr.filter((food) => food[property] < number);
+    }
+    return filteredArr;
+}
 
 /*
     Invoke the `filterByProperty` function passing
-    in a value for each paramter.
+    in a value for each parameter.
 
     You'll have to console.log to see the filtered array
 */
 
 //CODE HERE
+
+console.log(filterByProperty("price", 5, "below"));
